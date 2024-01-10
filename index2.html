@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student QR Code Generator</title>
+  </head>
+  <body>
+    <br><br>
+    <img src="c:\Users\acerr\Documents\Screenshot_2023-11-16-07-46-47-64_680d03679600f7af0b4c700c6b270fe7~2.jpg" style="width:15%;">
+    <h1>BCC Student QR Code Generator</h1>
+    <form>
+      <label for="student-name">Enter student name:</label>
+      <input type="text" id="student-name" name="student-name"><br><br>
+      <label for="student-id">Enter student ID:</label>
+      <input type="text" id="student-id" name="student-id"><br><br>
+      <label for="student-course">Course and Year:</label>
+      <input type="text" id="student-course" name="student-course"><br><br>
+      <button type="button" onclick="generateQRCode()">Generate QR Code</button>
+    </form>
+    <br>
+    <div id="qrcode"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script>
+      function generateQRCode() {
+        var studentName = document.getElementById("student-name").value;
+        var studentID = document.getElementById("student-id").value;
+        var qr = qrcode(0, "L");
+        qr.addData("Name: " + studentName + "\nID: " + studentID);
+        qr.make();
+        document.getElementById("qrcode").innerHTML = qr.createImgTag();
+      }
+    </script>
+  </body>
+</html>
